@@ -18,6 +18,7 @@ with open('./input.txt') as file:
                 directories[currentDirectory] = [int(line.rstrip().split(' ')[0])]
 
 cache = {}
+print(directories)
 def totalsize(i, temp):
     if i in cache:
         return cache[i]
@@ -26,11 +27,11 @@ def totalsize(i, temp):
             if type(a) == int:
                 temp += a
             else:
-                cache[i] = temp + totalsize(a, temp)
+                temp += totalsize(a, temp)
+        cache[i] = temp
         return temp
 
 ans = []
-
 for a in directories:
     ans.append(totalsize(a, 0))
     
