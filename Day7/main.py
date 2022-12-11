@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10000)
+print(sys.getrecursionlimit())
 directories = {}
 currentDirectory = '/'
 with open('./input.txt') as file:
@@ -18,7 +21,6 @@ with open('./input.txt') as file:
                 directories[currentDirectory] = [int(line.rstrip().split(' ')[0])]
 
 cache = {}
-print(directories)
 def totalsize(i, temp):
     if i in cache:
         return cache[i]
